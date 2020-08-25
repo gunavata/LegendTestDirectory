@@ -1,0 +1,34 @@
+<!-- Demonstration of data binding -->
+<!-- <h2>Legend {{legend.name | uppercase}}</h2>
+
+<div><span>id: </span>{{legend.id}}</div>
+<div><span>name: </span>{{legend.name}}</div>
+
+<h2>Update Legend Details</h2>
+<div>
+  <label>name:
+    <input [(ngModel)]="legend.name" placeholder="legend"/>
+  </label>
+</div> -->
+
+<h2>Available Legends</h2>
+
+<div>
+  <label>Legend name:
+    <input #legendName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(legendName.value); legendName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="legends">
+  <li *ngFor="let legend of legends">
+    <a routerLink="/detail/{{legend.id}}">
+      <span class="badge">{{legend.id}}</span> {{legend.name}}
+    </a>
+    <button class="delete" title="delete legend"
+    (click)="delete(legend)">x</button>
+  </li>
+</ul>
